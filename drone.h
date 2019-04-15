@@ -5,4 +5,46 @@
 // the drone is a location and the controller is a drone
 // they controller will access the drone and drone will move 
 // location
-// 
+
+#include "node.h"
+
+
+class location: public graph{
+
+  public:
+    location();
+    ~location();
+  protected:
+
+  private:
+
+    int location;
+
+}
+class drone: public location{
+
+  public:
+    drone();
+    ~drone();
+  protected:
+
+  private:
+    char * drone_name;
+
+
+}
+class controller: public drone{
+
+  public:
+    controller();
+    ~controller();
+  protected:
+    void move_forward();
+    void move_back();
+    void move_up();
+    void move_down();
+
+  private:
+
+
+}

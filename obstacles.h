@@ -4,3 +4,18 @@
 // will be the parent class and obstacle will inherit
 // these locations to then initiate one of the three
 // obstacles
+
+#include "node.h"
+
+
+class obstacle: public graph{
+
+
+
+}
+class ob_location: public obstacle{
+
+
+
+
+}
