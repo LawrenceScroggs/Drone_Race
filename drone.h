@@ -15,24 +15,28 @@ class location: public graph{
     location();
     ~location();
   protected:
+    void update_location();
+    void scan();
+    
 
   private:
 
-    int location;
+    int drone_location;
 
-}
+};
 class drone: public location{
 
   public:
     drone();
     ~drone();
   protected:
+    void name_drone();
 
   private:
     char * drone_name;
 
 
-}
+};
 class controller: public drone{
 
   public:
@@ -47,4 +51,4 @@ class controller: public drone{
   private:
 
 
-}
+};

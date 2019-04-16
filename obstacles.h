@@ -12,10 +12,10 @@ class obstacle: public graph{
 
 
 
-}
+};
 class ob_location: public obstacle{
 
 
 
 
-}
+};

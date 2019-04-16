@@ -3,6 +3,9 @@
 // Drone Class
 // Controller Class
 // Location Class
+// I will use this file to implement constructors and their initialization list
+// along with the functions used throughout the program.  Drone will be information held
+// on it's location, the drone itself and the controller for the drone
 
 
 

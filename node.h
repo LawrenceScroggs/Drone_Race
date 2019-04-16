@@ -16,10 +16,17 @@ using namespace std;
 
 class node{
 
+  public:
+    node();
+    ~node();
+
+  protected:
+
+  private:
 
 
-}
+};
 class graph{
 
 
-}
+};
