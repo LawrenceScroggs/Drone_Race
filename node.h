@@ -23,10 +23,37 @@ class node{
   protected:
 
   private:
+    int d_loc;
+    int o_loc;
+    class adjacent * adj_list;
+    node * next;
 
 
 };
-class graph{
+class adjacent: public node{
 
+  public:
+    adjacent();
+    ~adjacent();
+
+  protected:
+
+  private:
+
+    node * head;
+
+};
+class graph: public adjacent{
+
+  public:
+    graph();
+    ~graph();
+  protected:
+
+  private:
+
+    adjacent ** graph_list;
+    node * next;
+    node * prev;
 
 };

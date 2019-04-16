@@ -9,7 +9,7 @@
 #include "node.h"
 
 
-class location: public graph{
+class location: public node{
 
   public:
     location();

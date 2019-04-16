@@ -8,14 +8,29 @@
 #include "node.h"
 
 
-class obstacle: public graph{
+class obstacle: public node{
 
+  public:
+    obstacle();
+    ~obstacle();
 
+  protected:
+
+  private:
+    int ob_location;
+    bool post;
+    bool touch_go;
+    bool ladder;
 
 };
 class ob_location: public obstacle{
 
-
-
+  protected:
+    ob_location();
+    
+    void is_empty();
+    bool set_post();
+    bool set_touch();
+    bool set_ladder();
 
 };

@@ -6,8 +6,6 @@
 // traverse throughout the race track.  
 
 #include "node.h"
-#include "drone.h"
-#include "obstacles.h"
 
 
 
