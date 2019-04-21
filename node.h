@@ -26,21 +26,18 @@ class node{
     int d_loc;
     int o_loc;
     class adjacent * adj_list;
-    node * next;
 
 
 };
 class adjacent: public node{
 
-  public:
-    adjacent();
-    ~adjacent();
-
   protected:
+    adjacent(node *& head);
+    ~adjacent();
+    node * head;
 
   private:
 
-    node * head;
 
 };
 class graph: public adjacent{
@@ -52,6 +49,7 @@ class graph: public adjacent{
 
   private:
 
+    int list_size;
     adjacent ** graph_list;
     node * next;
     node * prev;
