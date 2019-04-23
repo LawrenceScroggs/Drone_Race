@@ -18,7 +18,7 @@ class node{
 
   public:
 
-    node(char temp,racetrack & temp2);
+    node(int count,racetrack * head,char temp2);
     node();
     ~node();
 

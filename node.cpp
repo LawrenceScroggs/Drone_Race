@@ -20,35 +20,46 @@ void node::go_next(){
 // builds racetrack for drones
 void racetrack::build_track(){
 
-  int temp = 0;
-  char temp2 = 'A';
+  int temp = 5;
 
-  if(!adj_list[temp])
+  char temp_l = 'A';
+
+  if(!adj_list[temp]->head)
   {
-    racetrack * temp3 = NULL;
-    adj_list[temp]->head = new node(temp2,temp3);
-    ++temp2;
-  }
-  else if(temp2 != 'E')
-  {
-    racetrack * temp3 = adj_list[temp];
-    adj_list[temp]->head = new node(temp2,temp3);
-    ++temp2;
+    adj_list[temp]->head = new node(temp,adj_list[temp + 1],temp_l);
   }
 }
-node::node(char temp, racetrack & temp2){
+node::node(int temp, racetrack * head, char temp2){
 
-  temp.next = temp2;
-  location = temp;
+  int temp_h = 0;
 
-  for(int i = 0; i < 10; ++i)
-    height[i] = i;
+  location = temp2;
+
+  for(int i = 0; i < 10; ++i){
+    height[i] = temp_h;
+    ++temp_h;
+  }
+  if(temp == 0)
+  {
+    next = NULL;
+    index = head;
+  }
+  
+
+  else
+  {
+    next = new node(--temp,head,++temp2);
+  }
 }
 // graph constructor sets data to null;
 node::node(){
 
-  for(int i = 0; i < 10; ++i)
-    height[i] = i;
+  int temp_h = 0;
+
+  for(int i = 0; i < 10; ++i){
+    height[i] = temp_h;
+    ++temp_h;
+  }
   location = ' ';
 
 }
