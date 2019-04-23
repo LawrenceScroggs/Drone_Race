@@ -10,6 +10,13 @@
 #include "node.h"
 
 
+
+// connects LLL for racetrack
+void node::go_next(){
+
+  
+
+}
 // builds racetrack for drones
 void racetrack::build_track(){
 
@@ -18,19 +25,30 @@ void racetrack::build_track(){
 
   if(!adj_list[temp])
   {
-    adj_list[temp] = new node(temp2);
-    adj_list[temp].next = NULL;
+    racetrack * temp3 = NULL;
+    adj_list[temp]->head = new node(temp2,temp3);
+    ++temp2;
+  }
+  else if(temp2 != 'E')
+  {
+    racetrack * temp3 = adj_list[temp];
+    adj_list[temp]->head = new node(temp2,temp3);
+    ++temp2;
   }
 }
-node::node(char temp){
+node::node(char temp, racetrack & temp2){
 
+  temp.next = temp2;
   location = temp;
 
+  for(int i = 0; i < 10; ++i)
+    height[i] = i;
 }
 // graph constructor sets data to null;
 node::node(){
 
-  height = 10;
+  for(int i = 0; i < 10; ++i)
+    height[i] = i;
   location = ' ';
 
 }
@@ -40,11 +58,11 @@ racetrack::racetrack(){
   list_size = 4;
 
 
-  adj_list = new node*[list_size];
+  adj_list = new racetrack*[list_size];
 
   for(int i = 0; i < list_size; ++i)
   {
-    adj_list[i] = NULL;
+    adj_list[i]->head = NULL;
   }
   
 }

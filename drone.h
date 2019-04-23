@@ -22,6 +22,7 @@ class location: public node{
   protected:
 
     int drone_location;
+    
 
 };
 class drone: public location{

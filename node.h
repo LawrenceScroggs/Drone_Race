@@ -18,17 +18,21 @@ class node{
 
   public:
 
-    node(char temp);
+    node(char temp,racetrack & temp2);
     node();
     ~node();
 
+    //node *& goNext();
 
+    void go_next();
 
   protected:
-    int height;
-    char location;
-    
 
+    int height[10];
+    char location;
+
+
+    node * next;
     racetrack * index;
 
 
@@ -46,9 +50,8 @@ class racetrack: public node{
 
     int list_size;
 
-    node ** adj_list;
-    node * next;
-    node * prev;
+    racetrack ** adj_list;
+    node * head;
 
 
 };
