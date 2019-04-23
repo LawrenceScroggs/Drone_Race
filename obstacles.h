@@ -14,9 +14,8 @@ class obstacle: public node{
     obstacle();
     ~obstacle();
 
-  protected:
 
-  private:
+  protected:
     int ob_location;
     bool post;
     bool touch_go;
@@ -25,12 +24,13 @@ class obstacle: public node{
 };
 class ob_location: public obstacle{
 
-  protected:
+  public:
     ob_location();
     
     void is_empty();
     bool set_post();
     bool set_touch();
     bool set_ladder();
+  protected:
 
 };

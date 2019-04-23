@@ -14,12 +14,12 @@ class location: public node{
   public:
     location();
     ~location();
-  protected:
+    
     void update_location();
     void scan();
     
 
-  private:
+  protected:
 
     int drone_location;
 
@@ -29,10 +29,9 @@ class drone: public location{
   public:
     drone();
     ~drone();
-  protected:
     void name_drone();
 
-  private:
+  protected:
     char * drone_name;
 
 
@@ -42,13 +41,12 @@ class controller: public drone{
   public:
     controller();
     ~controller();
-  protected:
     void move_forward();
     void move_back();
     void move_up();
     void move_down();
 
-  private:
+  protected:
 
 
 };

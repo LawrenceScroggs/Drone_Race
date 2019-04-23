@@ -20,37 +20,46 @@ class node{
     node();
     ~node();
 
-  protected:
 
-  private:
+    int set_location(int temp, int temp2);
+
+  protected:
     int d_loc;
     int o_loc;
-    class adjacent * adj_list;
+    int location_num;
+    int x;
+    int y;
+
+    class vertex * connect;
 
 
 };
-class adjacent: public node{
+class vertex: public node{
+
+  public:
+    vertex(node *& head);
+    ~vertex();
+
 
   protected:
-    adjacent(node *& head);
-    ~adjacent();
-    node * head;
 
-  private:
+    node * head;
 
 
 };
-class graph: public adjacent{
+class graph: public vertex{
 
   public:
     graph();
     ~graph();
+
+    int build_track();
+
   protected:
 
-  private:
 
     int list_size;
-    adjacent ** graph_list;
+    vertex ** graph_list;
     node * next;
     node * prev;
 

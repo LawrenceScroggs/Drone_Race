@@ -9,24 +9,44 @@
 
 #include "node.h"
 
+
+// builds racetrack for drones
+int graph::build_track(){
+
+  int x1 = 0;
+  int y1 = 0;
+
+  if(!head){
+
+    graph_list->*head = new node;
+    graph_list->set_location(x1,y1);
+  }
+
+ 
+  
+  
+
+}
 // graph constructor sets data to null;
 node::node(){
 
   d_loc = 0;
   o_loc = 0;
+  x = 0;
+  y = 0;
 
 }
-// creates adjacent class sets head to null
-adjacent::adjacent(node *& head){
+// creates vertex class sets head to null
+vertex::vertex(node *& head){
 
   head = NULL;
 }
 // creates graph class initates graph table invokes adj const
-graph::graph(): adjacent(head){
+graph::graph(): vertex(head){
 
   list_size = 13;
 
-  graph_list = new adjacent*[list_size];
+  graph_list = new vertex*[list_size];
 
   for(int i = 0; i < list_size; ++i)
   {
@@ -41,7 +61,7 @@ node::~node(){
 graph::~graph(){
 
 }
-// destructor for adjacent
-adjacent::~adjacent(){
+// destructor for vertex
+vertex::~vertex(){
 
 }
