@@ -11,57 +11,60 @@
 
 
 // builds racetrack for drones
-int graph::build_track(){
+void racetrack::build_track(){
 
-  int x1 = 0;
-  int y1 = 0;
+  int temp = 0;
+  char temp2 = 'A';
 
-  if(!head){
-
-    graph_list->*head = new node;
-    graph_list->set_location(x1,y1);
+  if(!adj_list[temp])
+  {
+    adj_list[temp] = new node(temp2);
+    adj_list[temp].next = NULL;
   }
+}
+node::node(char temp){
 
- 
-  
-  
+  location = temp;
 
 }
 // graph constructor sets data to null;
 node::node(){
 
-  d_loc = 0;
-  o_loc = 0;
-  x = 0;
-  y = 0;
+  height = 10;
+  location = ' ';
 
 }
-// creates vertex class sets head to null
-vertex::vertex(node *& head){
+// creates racetrack class sets head to null
+racetrack::racetrack(){
 
-  head = NULL;
+  list_size = 4;
+
+
+  adj_list = new node*[list_size];
+
+  for(int i = 0; i < list_size; ++i)
+  {
+    adj_list[i] = NULL;
+  }
+  
 }
 // creates graph class initates graph table invokes adj const
-graph::graph(): vertex(head){
+/*graph::graph(): vertex(head){
 
-  list_size = 13;
+  list_size = 4;
 
   graph_list = new vertex*[list_size];
 
   for(int i = 0; i < list_size; ++i)
   {
-    graph_list[i];
+    graph_list[i] = NULL;
   }
-}
+}*/
 // destructor for node
 node::~node(){
 
 }
-// destructor for graph
-graph::~graph(){
-
-}
-// destructor for vertex
-vertex::~vertex(){
+// destructor for racetrack
+racetrack::~racetrack(){
 
 }

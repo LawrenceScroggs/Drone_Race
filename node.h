@@ -11,43 +11,48 @@
 #include <cstring>
 
 using namespace std;
-
-
+class node;
+class racetrack;
 
 class node{
 
   public:
+
+    node(char temp);
     node();
     ~node();
 
 
-    int set_location(int temp, int temp2);
 
   protected:
-    int d_loc;
-    int o_loc;
-    int location_num;
-    int x;
-    int y;
+    int height;
+    char location;
+    
 
-    class vertex * connect;
+    racetrack * index;
 
 
 };
-class vertex: public node{
+class racetrack: public node{
 
   public:
-    vertex(node *& head);
-    ~vertex();
+    racetrack();
+    ~racetrack();
+
+    void build_track();
 
 
   protected:
 
-    node * head;
+    int list_size;
+
+    node ** adj_list;
+    node * next;
+    node * prev;
 
 
 };
-class graph: public vertex{
+/*class graph: public vertex{
 
   public:
     graph();
@@ -63,4 +68,4 @@ class graph: public vertex{
     node * next;
     node * prev;
 
-};
+};*/
