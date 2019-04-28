@@ -6,13 +6,16 @@
 // the base class for both sets of drone and obstacle 
 // allowing for shared functioniality between the sets
 
+#include <random>
 #include <iostream>
 #include <cctype>
 #include <cstring>
 
+
 using namespace std;
 class node;
 class racetrack;
+
 
 class node{
 
@@ -23,20 +26,16 @@ class node{
     node(const node &);
     ~node();
 
-    //node *& goNext();
-
     void display(node * head);
-    void go_next();
 
   protected:
 
     int height[10];
     char location;
 
-
     node * next;
+    node * prev;
     racetrack * index;
-
 
 };
 class racetrack{
@@ -49,7 +48,6 @@ class racetrack{
     void build_track();
     void display_track();
 
-
   protected:
 
     int list_size;
@@ -58,22 +56,4 @@ class racetrack{
     racetrack * adj_list;
     node * head;
 
-
 };
-/*class graph: public vertex{
-
-  public:
-    graph();
-    ~graph();
-
-    int build_track();
-
-  protected:
-
-
-    int list_size;
-    vertex ** graph_list;
-    node * next;
-    node * prev;
-
-};*/

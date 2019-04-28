@@ -5,10 +5,9 @@
 // these locations to then initiate one of the three
 // obstacles
 
-#include "node.h"
+#include "drone.h"
 
-
-class obstacle: public node{
+class obstacle: public location{
 
   public:
     obstacle();
@@ -16,21 +15,23 @@ class obstacle: public node{
 
 
   protected:
-    int ob_location;
-    bool post;
-    bool touch_go;
-    bool ladder;
+    int height;
+    int index;
+    char ob_location;
 
 };
-class ob_location: public obstacle{
+class obs_type: public obstacle{
 
   public:
-    ob_location();
+    obs_type();
     
     void is_empty();
     bool set_post();
     bool set_touch();
     bool set_ladder();
   protected:
+    bool post;
+    bool touch;
+    bool ladder;
 
 };

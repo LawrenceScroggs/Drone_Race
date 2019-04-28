@@ -6,10 +6,10 @@
 // they controller will access the drone and drone will move 
 // location
 
-#include "node.h"
+#include <random>
 
 
-class location: public node{
+class location{
 
   public:
     location();
@@ -21,7 +21,10 @@ class location: public node{
 
   protected:
 
-    int drone_location;
+    char * a_location;
+
+    int level;
+    int height;
     
 
 };
@@ -37,7 +40,7 @@ class drone: public location{
 
 
 };
-class controller: public drone{
+class controller{
 
   public:
     controller();

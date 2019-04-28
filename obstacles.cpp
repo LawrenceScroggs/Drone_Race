@@ -7,3 +7,17 @@
 // data structure.
 
 
+
+#include "obstacles.h"
+
+// builds obstacles constructor
+obstacle::obstacle(): location(){
+  
+    height = rand() % 10;
+} 
+
+  
+
+
+
+

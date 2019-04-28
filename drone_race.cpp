@@ -5,14 +5,14 @@
 // the obstacles and the racetrack on which the drone will need to
 // traverse throughout the race track.  
 
+
 #include "node.h"
-
-
 
 int main(){
 
 
   racetrack track;
+
 
   track.build_track();
 

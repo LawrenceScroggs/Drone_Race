@@ -11,7 +11,6 @@
 
 
 
-
 // displays track
 void racetrack::display_track(){
 
@@ -28,12 +27,11 @@ void racetrack::display_track(){
     
   }
 } 
-// connects LLL for racetrack
+// displays the nodes in racetrack
 void node::display(node * current){
 
   if(!current) return;
 
-    
   cout << "Location: " << current->location << endl;
   display(current->next);
 
@@ -88,10 +86,8 @@ node::node(int temp,racetrack * connect, char temp2){
     cout << "print " << location << endl;
     next = NULL;
     index = connect;
-    
   }
   
-
   else 
   {
     ++temp2;
