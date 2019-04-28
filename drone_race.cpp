@@ -12,7 +12,11 @@
 int main(){
 
 
+  racetrack track;
 
+  track.build_track();
+
+  track.display_track();
 
 
   return 0;

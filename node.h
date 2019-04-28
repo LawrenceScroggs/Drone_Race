@@ -18,12 +18,14 @@ class node{
 
   public:
 
-    node(int count,racetrack * head,char temp2);
+    node(int count,racetrack * connect,char temp2);
     node();
+    node(const node &);
     ~node();
 
     //node *& goNext();
 
+    void display(node * head);
     void go_next();
 
   protected:
@@ -37,20 +39,23 @@ class node{
 
 
 };
-class racetrack: public node{
+class racetrack{
 
   public:
     racetrack();
     ~racetrack();
+    racetrack(const racetrack &);
 
     void build_track();
+    void display_track();
 
 
   protected:
 
     int list_size;
+    int count = 0;
 
-    racetrack ** adj_list;
+    racetrack * adj_list;
     node * head;
 
 

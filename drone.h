@@ -46,6 +46,7 @@ class controller: public drone{
     void move_back();
     void move_up();
     void move_down();
+    void set_start();
 
   protected:
 
