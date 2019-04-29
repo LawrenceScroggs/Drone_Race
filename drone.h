@@ -12,16 +12,22 @@
 #include <iostream>
 #include <cstring>
 
+using namespace std;
+
+#include "node.h"
+
+class controller;
+class drone;
 
 
-class location{
+class location: public node{
 
   public:
     location();
     location(char *& b_location);
     ~location();
     
-    void display();
+    void display_location();
     
 
   protected:
@@ -36,20 +42,26 @@ class drone: public location{
     drone();
     drone(char *& a_name, char *& b_location);
     ~drone();
+    
 
+    void go_forward();
     void build_drone();
     void display_drone();
+    void set_track(racetrack * ob);
 
   protected:
-    char * drone_name;
 
+    node * d_head;
+    racetrack * start;
+    char * drone_name;
+    int drone_count = 0;
 
 };
 class controller{
 
   public:
     controller();
-    ~controller();
+
     void move_forward();
     void move_back();
     void move_up();

@@ -6,22 +6,25 @@
 // traverse throughout the race track.  
 
 
-#include "node.h"
+#include "drone.h"
 
 int main(){
 
-
-  drone drone1;
+  drone speedy;
   racetrack track;
 
-  bool again = true;
-  
+
   track.build_track();
 
-  track.display_track();
 
-  track.set_drone(drone1);
+  speedy.build_drone();
 
+  speedy.set_track(&track);
+
+  speedy.go_forward();
+
+
+ 
 
   return 0;
 

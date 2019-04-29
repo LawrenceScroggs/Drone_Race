@@ -11,6 +11,31 @@
 
 
 
+using namespace std;
+
+
+// gets the info to compare for drone
+bool node::go_next(node * current){
+
+  bool check = false;
+
+  current = current->next;
+
+  if(current)
+    return true;
+
+
+}
+bool racetrack::can_move(){
+
+  node * current = adj_list[0].head;
+
+  if(current)
+    return true;
+
+  current->go_next(current);
+
+}
 
 // displays track
 void racetrack::display_track(){
@@ -56,8 +81,6 @@ void racetrack::build_track(){
 
   while(!adj_list[temp].head && temp < list_size)
   {
-    cout << "in here" << endl;
-
     if(temp == list_size-1)
     {
       connect = &adj_list[0];
@@ -126,15 +149,7 @@ racetrack::racetrack(){
 // copy constructor for racetrack
 racetrack::racetrack(const racetrack &){
 
-  list_size = 4;
 
-  adj_list = new racetrack[list_size];
-
-  for(int i = 0; i < list_size; ++i)
-  {
-    adj_list[i].head = NULL;
-    cout << i << endl;
-  }
 }
 // destructor for node
 node::~node(){

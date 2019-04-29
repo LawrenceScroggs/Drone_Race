@@ -9,18 +9,89 @@
 
 #include "drone.h"
 
-using namespace std;
 
 
+void drone::go_forward(){
+
+  bool check = false;
+
+  check = start->can_move();
+
+  if(check)
+    ++a_location[1];
+  
+
+  display_drone();
+
+  d_head->display();
+}
+void drone::set_track(racetrack * ob){
+
+  start = ob;
+
+  start->display_track();
+
+  display_drone();
+
+}
+void drone::build_drone(){
+
+  
+  cout << "Please enter the name of your drone: ";
+  char * temp = new char[100];
+  cin.get(temp,100);
+  cin.ignore(100,'\n');
+  cout << endl << endl;
+
+  //sets locations for each of the drone objects
+  if(drone_count == 0){
+
+    char * temp2 = new char[3];
+    temp2[0] = '0';  // index of vertex
+    temp2[1] = 'A';  // node location
+    temp2[2] = '0';  // height
+
+    drone_name = temp;
+    a_location = temp2;
+    ++drone_count;
+
+  }
+  else if(drone_count == 1){
+    
+    char * temp2 = new char[3];
+    temp2[0] = '0';
+    temp2[1] = 'A';
+    temp2[2] = '3';
+
+    drone_name = temp;
+    a_location = temp2;
+    ++drone_count;
+
+  }
+  else if(drone_count == 2){
+    
+    char * temp2 = new char[3];
+    temp2[0] = '0';
+    temp2[1] = 'A';
+    temp2[2] = '6';
+
+    drone_name = temp;
+    a_location = temp2;
+    ++drone_count;
+  }
+  else
+    cout << "Too many drones for track" << endl << endl;
+
+}
 // builds new drone and sets name and location
 void drone::display_drone(){
 
   cout << "Name: " << drone_name << endl;
-  display();
+  display_location();
 
 } 
 // displays protected location
-void location::display(){
+void location::display_location(){
 
   cout << "Location: " << a_location << endl;
 
@@ -30,6 +101,12 @@ drone::drone(char *& a_name,char *& b_location): location(b_location){
 
   drone_name = new char[strlen(a_name) + 1];
   strcpy(drone_name,a_name);
+
+
+}
+// basic controller constructor
+controller::controller(){
+
 
 
 }
@@ -50,6 +127,8 @@ location::location(char *& b_location){
   a_location[1] = b_location[1];
   a_location[2] = b_location[2];
 
+
+
 }
 // basic drone constructor
 location::location(){
@@ -58,7 +137,6 @@ location::location(){
   for(int i; i < 3; ++i)
     a_location[i] = 0;
 
-  
 }
 // drone destructor
 location::~location(){

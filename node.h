@@ -10,10 +10,7 @@
 #include <iostream>
 #include <cctype>
 #include <cstring>
-#include "drone.h"
 
-
-using namespace std;
 class node;
 class racetrack;
 
@@ -27,7 +24,9 @@ class node{
     node(const node &);
     ~node();
 
+    char get_loc();
     void display(node * head);
+    bool go_next(node * current);
 
   protected:
 
@@ -46,20 +45,18 @@ class racetrack{
     ~racetrack();
     racetrack(const racetrack &);
 
-    void set_drone(drone & a_drone);
     void build_track();
     void display_track();
+    void get_info();
+    bool can_move();
+    
 
   protected:
 
-    int drone_count = 0;
+    int index = 0;
     int list_size;
     int count = 0;
 
-    drone * drone1;
-    drone * drone2;
-    drone * drone3;
-    
     racetrack * adj_list;
     node * head;
 
