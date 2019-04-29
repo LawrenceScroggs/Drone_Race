@@ -11,12 +11,16 @@
 int main(){
 
 
+  drone drone1;
   racetrack track;
 
-
+  bool again = true;
+  
   track.build_track();
 
   track.display_track();
+
+  track.set_drone(drone1);
 
 
   return 0;

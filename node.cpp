@@ -11,6 +11,7 @@
 
 
 
+
 // displays track
 void racetrack::display_track(){
 
@@ -135,18 +136,6 @@ racetrack::racetrack(const racetrack &){
     cout << i << endl;
   }
 }
-// creates graph class initates graph table invokes adj const
-/*graph::graph(): vertex(head){
-
-  list_size = 4;
-
-  graph_list = new vertex*[list_size];
-
-  for(int i = 0; i < list_size; ++i)
-  {
-    graph_list[i] = NULL;
-  }
-}*/
 // destructor for node
 node::~node(){
 

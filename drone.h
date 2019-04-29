@@ -7,33 +7,38 @@
 // location
 
 #include <random>
+#include <cctype>
+#include <cstdlib>
+#include <iostream>
+#include <cstring>
+
 
 
 class location{
 
   public:
     location();
+    location(char *& b_location);
     ~location();
     
-    void update_location();
-    void scan();
+    void display();
     
 
   protected:
 
     char * a_location;
 
-    int level;
-    int height;
-    
 
 };
 class drone: public location{
 
   public:
     drone();
+    drone(char *& a_name, char *& b_location);
     ~drone();
-    void name_drone();
+
+    void build_drone();
+    void display_drone();
 
   protected:
     char * drone_name;
