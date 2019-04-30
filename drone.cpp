@@ -1,39 +1,69 @@
 // Lawrence Scroggs CS202 04/06/19 Program 1
 // This file will hold all the functions for the 
 // Drone Class
-// Controller Class
 // Location Class
 // I will use this file to implement constructors and their initialization list
 // along with the functions used throughout the program.  Drone will be information held
-// on it's location, the drone itself and the controller for the drone
+// on it's location.  Drone will be a child class that to Location so it is a location and more!!!
 
 #include "drone.h"
 
 
 
-void drone::go_forward(){
 
-  bool check = false;
 
-  check = start->can_move();
+// moves drone down in height
+void drone::move_down(){
 
-  if(check)
-    ++a_location[1];
-  
+  if(a_location[2] != '0')
+    --a_location[2];
 
-  display_drone();
-
-  d_head->display();
-}
-void drone::set_track(racetrack * ob){
-
-  start = ob;
-
-  start->display_track();
-
-  display_drone();
+  else
+    cout << "Can't go lower" << endl;
 
 }
+// moves drone up in height
+void drone::move_up(){
+
+  if(a_location[2] != '9')
+    ++a_location[2];
+
+  else
+    cout << "Can't go higher" << endl;
+
+}
+
+// updates position
+bool drone::update_position(char * temp){
+
+  strcpy(a_location,temp);
+
+  if(a_location[0] == '3' && a_location[1] == 'T')
+  {
+    cout << "FINISH LINE!!!!!  " << drone_name << " WINS!! " << endl;
+    return true;
+  }
+  else 
+    return false;
+
+}
+// sends location to racetrack checks for obstacles
+char * drone::go_forward(){
+
+  char * temp = new char[3];
+  strcpy(temp,a_location);
+
+  return temp;
+
+
+}
+// sets starting bool to true if ready
+void drone::start_time(bool check){
+
+  start = check;
+
+}
+// sets the drone up with a name and its starting location
 void drone::build_drone(){
 
   
@@ -46,7 +76,7 @@ void drone::build_drone(){
   //sets locations for each of the drone objects
   if(drone_count == 0){
 
-    char * temp2 = new char[3];
+    char * temp2 = new char[4];
     temp2[0] = '0';  // index of vertex
     temp2[1] = 'A';  // node location
     temp2[2] = '0';  // height
@@ -58,7 +88,7 @@ void drone::build_drone(){
   }
   else if(drone_count == 1){
     
-    char * temp2 = new char[3];
+    char * temp2 = new char[4];
     temp2[0] = '0';
     temp2[1] = 'A';
     temp2[2] = '3';
@@ -70,7 +100,7 @@ void drone::build_drone(){
   }
   else if(drone_count == 2){
     
-    char * temp2 = new char[3];
+    char * temp2 = new char[4];
     temp2[0] = '0';
     temp2[1] = 'A';
     temp2[2] = '6';
@@ -104,19 +134,23 @@ drone::drone(char *& a_name,char *& b_location): location(b_location){
 
 
 }
-// basic controller constructor
-controller::controller(){
-
-
-
-}
 // basic drone constructor
 drone::drone(){
 
   drone_name = new char[100];
+  start = false;
+
 }
 // drone destructor
 drone::~drone(){
+
+  delete drone_name;
+
+}
+drone::drone(const drone & obj){
+
+  drone_name = obj.drone_name;
+  start = obj.start;
 
 
 }
@@ -128,17 +162,18 @@ location::location(char *& b_location){
   a_location[2] = b_location[2];
 
 
-
 }
 // basic drone constructor
 location::location(){
 
-  a_location = new char[3];
+  a_location = new char[4];
   for(int i; i < 3; ++i)
     a_location[i] = 0;
 
 }
 // drone destructor
 location::~location(){
+
+  delete a_location;
 
 }

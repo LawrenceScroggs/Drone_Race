@@ -1,13 +1,17 @@
 // Lawrence Scroggs CS202 04/06/19 program 1
 // This file will hold the class for the obstacles class
-// and the obstacle location class.  Obstacle location
-// will be the parent class and obstacle will inherit
-// these locations to then initiate one of the three
-// obstacles
+// obstacles will have random attributes depending on the
+// obstacle member sent into node class.  These will need
+// to be set up so the drone can see them when moving
+// through out the track.
 
-#include "drone.h"
+#include <random>
+#include <cctype>
+#include <iostream>
 
-class obstacle: public location{
+using namespace std;
+
+class obstacle{
 
   public:
     obstacle();
@@ -18,20 +22,5 @@ class obstacle: public location{
     int height;
     int index;
     char ob_location;
-
-};
-class obs_type: public obstacle{
-
-  public:
-    obs_type();
-    
-    void is_empty();
-    bool set_post();
-    bool set_touch();
-    bool set_ladder();
-  protected:
-    bool post;
-    bool touch;
-    bool ladder;
 
 };

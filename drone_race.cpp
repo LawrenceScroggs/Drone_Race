@@ -13,15 +13,34 @@ int main(){
   drone speedy;
   racetrack track;
 
+  bool check = false;
 
   track.build_track();
 
-
   speedy.build_drone();
 
-  speedy.set_track(&track);
+  speedy.display_drone();
 
-  speedy.go_forward();
+  speedy.start_time(track.start_race());
+
+
+  // sends drone location/checks availabilty/ updates position
+  speedy.update_position(track.can_move(speedy.go_forward()));
+  speedy.display_drone();
+
+  speedy.move_up();
+  speedy.display_drone();
+
+  speedy.move_down();
+  speedy.display_drone();
+
+
+  // loop to check for finish line
+  while(!check){
+  check = speedy.update_position(track.can_move(speedy.go_forward()));
+
+  speedy.display_drone();
+  }
 
 
  

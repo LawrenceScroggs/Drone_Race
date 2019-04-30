@@ -1,10 +1,8 @@
 // Lawrence Scroggs CS202 04/05/19 Program 1
 // This file will hold the drone class of the program
-// it will also hold the location and controller class.
-// The parent class will be the location class this way 
-// the drone is a location and the controller is a drone
-// they controller will access the drone and drone will move 
-// location
+// and the location class.  Drone will be a child of location
+// this way it will be a location and more.
+
 
 #include <random>
 #include <cctype>
@@ -16,11 +14,10 @@ using namespace std;
 
 #include "node.h"
 
-class controller;
 class drone;
 
 
-class location: public node{
+class location{
 
   public:
     location();
@@ -33,6 +30,7 @@ class location: public node{
   protected:
 
     char * a_location;
+    char * s_location;
 
 
 };
@@ -40,35 +38,26 @@ class drone: public location{
 
   public:
     drone();
+    drone(const drone &);
     drone(char *& a_name, char *& b_location);
     ~drone();
     
 
-    void go_forward();
+    char * go_forward();
+
+    void move_down();
+    void move_up();
     void build_drone();
     void display_drone();
     void set_track(racetrack * ob);
+    void start_time(bool check);
+
+    bool update_position(char * temp);
 
   protected:
 
-    node * d_head;
-    racetrack * start;
+    bool start;
     char * drone_name;
     int drone_count = 0;
-
-};
-class controller{
-
-  public:
-    controller();
-
-    void move_forward();
-    void move_back();
-    void move_up();
-    void move_down();
-    void set_start();
-
-  protected:
-
 
 };

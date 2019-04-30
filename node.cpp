@@ -14,6 +14,51 @@
 using namespace std;
 
 
+  
+// finds where drone is in data stucture and returns updated position
+char * node::forward(char * temp,node * current){
+
+  if(temp[1] != current->location)
+    return forward(temp,current->next);
+
+  else
+  {
+    if(!current->next){
+      ++temp[0];
+      temp[1] = 'A';
+      return temp;
+    }
+    else
+    {
+      temp[1] = current->next->location;
+      return temp;
+    }
+  }
+  
+}
+// gets info from drone and sends to node for check
+char * racetrack::can_move(char * temp){
+
+  char blah = temp[0];
+  char * i = new char[2];
+  i[0] = blah;
+  int here = atoi(i);
+
+  node * current = adj_list[here].head;
+
+  
+  strcpy(temp,current->forward(temp,current));
+
+  return temp;
+
+
+}
+// tells drones race is starting
+bool racetrack::start_race(){
+
+  return true;
+
+}
 // gets the info to compare for drone
 bool node::go_next(node * current){
 
@@ -26,17 +71,6 @@ bool node::go_next(node * current){
 
 
 }
-bool racetrack::can_move(){
-
-  node * current = adj_list[0].head;
-
-  if(current)
-    return true;
-
-  current->go_next(current);
-
-}
-
 // displays track
 void racetrack::display_track(){
 
@@ -67,10 +101,12 @@ void node::display(node * current){
 void racetrack::build_track(){
 
   int temp = 0;
-  int temp_c = 5;
+  int temp_c = 20; // sets length of linked list
 
   char temp_l = 'A';
-  
+ 
+
+  // implements graph as array of classes
   adj_list = new racetrack[list_size];
   racetrack * connect = NULL;
 
@@ -79,6 +115,7 @@ void racetrack::build_track(){
     adj_list[i].head = NULL;
   }
 
+  // while it is less than graph size make track
   while(!adj_list[temp].head && temp < list_size)
   {
     if(temp == list_size-1)
@@ -101,13 +138,13 @@ node::node(int temp,racetrack * connect, char temp2){
 
   location = temp2;
 
+  // sets height array
   for(int i = 0; i < 10; ++i){
     height[i] = temp_h;
     ++temp_h;
   }
   if(temp == 1)
   {
-    cout << "print " << location << endl;
     next = NULL;
     index = connect;
   }
@@ -116,7 +153,6 @@ node::node(int temp,racetrack * connect, char temp2){
   {
     ++temp2;
     next = new node(--temp,connect,temp2);
-    cout << "here " << location << endl;
     index = connect;
   }
 }
@@ -158,4 +194,5 @@ node::~node(){
 // destructor for racetrack
 racetrack::~racetrack(){
 
+  //delete adj_list;
 }
